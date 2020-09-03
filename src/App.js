@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {ReactComponent as Menu} from "./menu.svg";
 import {ReactComponent as Close} from "./close.svg";
 import './App.scss';
 
+
 function App() {
+    // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+
+
+    const myRef = useRef(null);
+    console.log(myRef)
 
     return (
         <div className="app">
@@ -17,15 +23,15 @@ function App() {
                         <Close className="app__close-logo"/>
                     </label>
                     <div className="app__menu">
-                        <div className="app__menu-item">
+                        <a className="app__menu-item">
                             Элемент 1
-                        </div>
+                        </a>
                         <input id="radio1" type="radio" className="radio-input" name="radio"/>
 
-                        <div className="app__menu-item">
+                        <div ref={myRef} className="app__menu-item">
 
                             Элемент 2
-                            <label htmlFor="radio1" className="app__menu-item-arrow">
+                            <label  htmlFor="radio1" className="app__menu-item-arrow">
                                 <i className="arrow"/>
                             </label>
 
@@ -99,7 +105,7 @@ function App() {
                                 </div>
 
                             </div>
-                            {/*<div className="app__blur"/>*/}
+                            <div className="app__blur"/>
 
                         </div>
                         <div className="app__menu-item">
@@ -145,6 +151,8 @@ function App() {
                     accumsan convallis egestas. Donec quis tellus consectetur eros malesuada ultricies sed at leo.
                     Vivamus rhoncus cursus orci id faucibus.
                 </div>
+
+
             </div>
         </div>
     );
